@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Weather App</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="Check_Weather">Check Weather</string>
+    <string name="Back">Back</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="Enter_zip">Enter Zip Code</string>
+    <string name="City_name">City Name: %1$s</string>
+    <string name="Temp_C">Temp (C): %1$s</string>
+    <string name="Temp_F">Temp (F): %1$s</string>
+
+
+</resources>

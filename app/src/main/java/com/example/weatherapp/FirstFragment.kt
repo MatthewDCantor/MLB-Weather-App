@@ -14,34 +14,6 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-
-
-class MySingleton constructor(context: Context) {
-    companion object {
-        @Volatile
-        private var INSTANCE: MySingleton? = null
-        fun getInstance(context: Context) =
-                INSTANCE ?: synchronized(this) {
-                    INSTANCE ?: MySingleton(context).also {
-                        INSTANCE = it
-                    }
-                }
-    }
-
-    private val requestQueue: RequestQueue by lazy {
-        // applicationContext is key, it keeps you from leaking the
-        // Activity or BroadcastReceiver if someone passes one in.
-        Volley.newRequestQueue(context.applicationContext)
-    }
-    fun <T> addToRequestQueue(req: Request<T>) {
-        requestQueue.add(req)
-    }
-}
-
-
 
 class FirstFragment : Fragment() {
 
@@ -68,7 +40,7 @@ class FirstFragment : Fragment() {
 
                 val zip = editText.text.toString().toInt() // Test if user input an int.
                 val url = "https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=addb854c6b1c841e01c428436cf00ae0"
-
+                val queue = Volley.newRequestQueue(requireContext())
 
 
                 val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
@@ -89,9 +61,8 @@ class FirstFragment : Fragment() {
                         }
                 )
 
-                // Access the RequestQueue through your singleton class.
-                MySingleton.getInstance(requireContext()).addToRequestQueue(jsonObjectRequest)
-
+                // Access the RequestQueue through your singleton class
+                queue.add(jsonObjectRequest)
 
 
 

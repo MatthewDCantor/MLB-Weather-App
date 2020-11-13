@@ -1,6 +1,5 @@
 package com.example.weatherapp
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +9,16 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
-import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 
+/*
+The first fragment provides a centered input for the user to enter the zip code. When the user
+presses the check weather button, the app calls the openweatermap api and return the temperature
+in kelvin and the city name at the given zip code. This data is passed to the second fragment in
+the array, data.
+
+ */
 
 class FirstFragment : Fragment() {
 
@@ -56,18 +61,22 @@ class FirstFragment : Fragment() {
                         },
 
                         {
+                            //clear input box and display error message if the request returns an error.
+                            // this occurs when the user enters and int that is not a valid zip.
                             editText.text.clear()
                             editText.hint = errorMessage
                         }
                 )
 
-                // Access the RequestQueue through your singleton class
+                // Access the RequestQueue through the queue
                 queue.add(jsonObjectRequest)
 
 
 
             }
             catch (e: NumberFormatException){
+                //if a non-int is entered, the edit text is cleared and displays the error message
+                // as a hint.
                 editText.text.clear()
                 editText.hint = errorMessage
             }

@@ -11,5 +11,5 @@ Screen Two -
 Displays the current city name that was looked up by zip code and
 displays the current weather conditions in both Fahrenheit and Celsius
 
-The app includes unit tests to check that the transformation from kelvin to celsius and fahrenheit. 
+The app includes unit tests to check the transformation from kelvin to celsius and fahrenheit. 
 If an invalid zip code is entered, the text is cleared and the user is informed that the zip code was invalid. 
